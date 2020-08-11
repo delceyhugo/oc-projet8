@@ -60,6 +60,12 @@ describe('controller', function () {
 
 	it('should show entries on start-up', function () {
 		// TODO: write test
+		var todo = {title: 'my todo'};
+		setUpModel([todo]);
+
+		subject.setView('');
+
+		expect(view.render).toHaveBeenCalledWith('showEntries', [todo]);
 	});
 
 	describe('routing', function () {
@@ -84,10 +90,21 @@ describe('controller', function () {
 
 		it('should show active entries', function () {
 			// TODO: write test
+			setUpModel([{title: 'my active todo', completed: false}]);
+
+			subject.setView('#/active');
+
+			expect(view.render).toHaveBeenCalledWith('showEntries', [{title: 'my active todo', completed: false}]);
+
 		});
 
 		it('should show completed entries', function () {
 			// TODO: write test
+			setUpModel([{title: 'my completed todo', completed: true}]);
+
+			subject.setView('#/active');
+
+			expect(view.render).toHaveBeenCalledWith('showEntries', [{title: 'my completed todo', completed: true}]);
 		});
 	});
 
@@ -135,10 +152,28 @@ describe('controller', function () {
 
 	it('should highlight "All" filter by default', function () {
 		// TODO: write test
+		setUpModel([{title: 'my todo'}]);
+
+		subject.setView('');
+
+		expect(view.render).toHaveBeenCalledWith('setFilter', '')
 	});
 
 	it('should highlight "Active" filter when switching to active view', function () {
 		// TODO: write test
+		setUpModel([{title: 'my todo'}]);
+
+		subject.setView('#/active');
+
+		expect(view.render).toHaveBeenCalledWith('setFilter', 'active')
+	});
+	it('should highlight "Completed" filter when switching to completed view', function () {
+		// TODO: write test
+		setUpModel([{title: 'my todo'}]);
+
+		subject.setView('#/completed');
+
+		expect(view.render).toHaveBeenCalledWith('setFilter', 'completed')
 	});
 
 	describe('toggle all', function () {
