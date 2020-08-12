@@ -23,7 +23,6 @@
 		this.$clearCompleted = qs('.clear-completed');
 		this.$main = qs('.main');
 		this.$footer = qs('.footer');
-		console.log(qs('.toggle-all'))
 		this.$toggleAll = qs('.toggle-all');
 		this.$newTodo = qs('.new-todo');
 	}
@@ -112,7 +111,6 @@
 				self.$main.style.display = self.$footer.style.display = parameter.visible ? 'block' : 'none';
 			},
 			toggleAll: function () {
-				console.log(parameter)
 				self.$toggleAll.checked = parameter.checked;
 			},
 			setFilter: function () {

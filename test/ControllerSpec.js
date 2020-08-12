@@ -179,6 +179,11 @@ describe('controller', function () {
 	describe('toggle all', function () {
 		it('should toggle all todos to completed', function () {
 			// TODO: write test
+			setUpModel([{title: 'my todo'},{completed: false}])
+			subject.setView('')
+			// Set toggleAll
+			view.trigger('toggleAll',{completed: true})
+			expect(view.render).toHaveBeenCalledWith('showEntries', [{title: 'my todo'},{completed: true}])
 		});
 
 		it('should update the view', function () {
