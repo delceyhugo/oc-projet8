@@ -42,7 +42,6 @@
 		});
 
 		self.view.bind('toggleAll', function (status) {
-			console.log(status)
 			self.toggleAll(status.completed);
 		});
 	}
@@ -201,7 +200,6 @@
 	 */
 	Controller.prototype.toggleComplete = function (id, completed, silent) {
 		var self = this;
-		console.log(id, completed)
 		self.model.update(id, { completed: completed }, function () {
 			self.view.render('elementComplete', {
 				id: id,
